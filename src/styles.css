@@ -41,6 +41,7 @@
   --color-gold-soft: var(--gold-soft);
   --color-danger: var(--danger);
   --color-ink: var(--ink);
+  --color-terracotta: var(--terracotta);
 
   --font-serif: "DM Serif Display", ui-serif, Georgia, serif;
   --font-sans: "Fira Sans", ui-sans-serif, system-ui, sans-serif;
@@ -64,6 +65,7 @@
   --gold: oklch(0.78 0.09 82);
   --gold-soft: oklch(0.9 0.05 85);
   --danger: oklch(0.5 0.14 30);
+  --terracotta: oklch(0.58 0.11 45);
 
   --background: var(--cream);
   --foreground: var(--ink);
@@ -99,7 +101,7 @@
   }
   h1, h2, h3, h4 {
     font-family: var(--font-serif);
-    font-weight: 400;
+    font-weight: 700;
     letter-spacing: -0.015em;
     line-height: 1.05;
   }
@@ -122,10 +124,10 @@
   gap: 0.5rem;
   font-family: var(--font-sans);
   font-size: 0.7rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--olive);
+  color: var(--terracotta);
 }
 
 @utility divider-leaf {

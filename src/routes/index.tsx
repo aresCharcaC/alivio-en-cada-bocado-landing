@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   Leaf, Wheat, Timer, Zap, Check, X, ShieldCheck, Mail, Lock,
-  ChevronDown, Star, Sparkles, Clock, HeartPulse, UtensilsCrossed,
+  ChevronDown, Star, Sparkles, Clock, HeartPulse, UtensilsCrossed, Heart,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -157,55 +157,34 @@ function TopBar() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-cream to-sand/40">
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
-        <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-olive-deep blur-3xl" />
-        <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-olive blur-3xl" />
-      </div>
+      <div className="container-editorial relative py-16 sm:py-24 text-center">
+        <h1 className="mx-auto max-w-2xl font-serif text-[2.4rem] leading-[1.08] text-olive-deep sm:text-6xl">
+          ¿Cansada de la <span className="text-gold">hinchazón</span> y la falta de energía?
+        </h1>
 
-      <div className="container-editorial relative py-16 sm:py-24 lg:py-32">
-        <div className="grid gap-14 lg:grid-cols-[1.05fr_1fr] lg:items-center">
-          <div>
-            <span className="eyebrow">Ebook · Nutrición antiinflamatoria</span>
-            <h1 className="mt-6 font-serif text-[2.6rem] leading-[1.02] text-olive-deep sm:text-6xl lg:text-[4.5rem]">
-              ¿Cansada de la <em className="italic text-olive">hinchazón</em> y la falta de energía?
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-earth-dark/80">
-              Decile adiós a la inflamación con recetas fáciles y deliciosas que te ayudan a sentirte más liviana desde los primeros días.
-            </p>
+        <Heart className="mx-auto mt-6 h-6 w-6 fill-gold text-gold" />
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <CTAButton size="lg">Quiero desinflamarme</CTAButton>
-              <div className="flex items-center gap-2 text-sm text-earth">
-                <ShieldCheck className="h-4 w-4 text-olive" />
-                Garantía 30 días · Acceso inmediato
-              </div>
-            </div>
+        <p className="mt-6 font-serif text-2xl text-gold sm:text-3xl">
+          Decile adiós a la inflamación
+        </p>
+        <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-earth-dark/80">
+          con recetas fáciles y deliciosas que te ayudan a sentirte más liviana desde los primeros días.
+        </p>
 
-            <div className="mt-14 border-t border-olive/15 pt-8">
-              <p className="font-serif text-xl italic text-olive-deep sm:text-2xl">
-                "Comé rico, sentite mejor, viví con más energía."
-              </p>
-            </div>
-          </div>
-
-          <div className="relative">
-            <ProductImage
-              src="/images/alivio en cada bocado.png"
-              alt="Ebook Alivio en Cada Bocado — mockup libro y celular"
-              className="aspect-[4/5] w-full max-w-md mx-auto shadow-lift"
-            />
-            <div className="absolute -bottom-6 -left-4 sm:-left-8 max-w-[240px] rounded-lg bg-cream p-4 shadow-soft border border-olive/10">
-              <div className="flex items-baseline gap-2">
-                <span className="font-serif text-3xl text-olive-deep">+150</span>
-                <span className="text-xs uppercase tracking-widest text-earth">recetas</span>
-              </div>
-              <p className="mt-1 text-xs leading-relaxed text-earth-dark/80">
-                rápidas y antiinflamatorias para dejar de sufrir pensando qué cocinar.
-              </p>
-            </div>
+        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <CTAButton size="lg">Quiero desinflamarme</CTAButton>
+          <div className="flex items-center gap-2 text-sm text-earth">
+            <ShieldCheck className="h-4 w-4 text-olive" />
+            Garantía 30 días · Acceso inmediato
           </div>
         </div>
       </div>
+
+      <ProductImage
+        src="/images/alivio en cada bocado.png"
+        alt="Ebook Alivio en Cada Bocado — mockup libro y celular"
+        className="aspect-[16/11] w-full rounded-none sm:aspect-[21/9]"
+      />
     </section>
   );
 }
@@ -218,14 +197,30 @@ function MarqueeStrip() {
     { icon: Zap, label: "Más Energía" },
   ];
   return (
-    <section className="bg-olive-deep text-cream">
-      <div className="container-editorial grid grid-cols-2 gap-y-6 py-10 sm:grid-cols-4">
-        {items.map((it) => (
-          <div key={it.label} className="flex items-center justify-center gap-3">
-            <it.icon className="h-5 w-5 text-gold" />
-            <span className="text-sm font-medium tracking-wider uppercase">{it.label}</span>
-          </div>
-        ))}
+    <section className="bg-cream py-16 sm:py-20">
+      <div className="container-editorial">
+        <div className="rounded-2xl bg-olive-deep px-6 py-8 text-center text-cream sm:px-10 sm:py-10">
+          <p className="font-serif text-xl leading-snug sm:text-2xl">
+            Más de 150 recetas rápidas y antiinflamatorias para dejar de sufrir pensando qué cocinar.
+          </p>
+        </div>
+
+        <div className="mt-12 grid grid-cols-2 gap-y-10 sm:grid-cols-4">
+          {items.map((it) => (
+            <div key={it.label} className="flex flex-col items-center gap-3 text-center">
+              <span className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-gold text-olive-deep">
+                <it.icon className="h-7 w-7" strokeWidth={1.5} />
+              </span>
+              <span className="text-xs font-semibold uppercase tracking-widest text-olive-deep">{it.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 rounded-2xl bg-olive-deep px-6 py-8 text-center text-cream sm:px-10 sm:py-10">
+          <p className="text-lg font-bold uppercase tracking-wide sm:text-xl">
+            Comé rico, sentite mejor, viví con más energía.
+          </p>
+        </div>
       </div>
     </section>
   );
@@ -235,30 +230,28 @@ function PainSection() {
   return (
     <section className="py-24 sm:py-32">
       <div className="container-editorial">
-        <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24 lg:items-start">
-          <div className="lg:sticky lg:top-28">
-            <SectionEyebrow>¿Te suena familiar?</SectionEyebrow>
-            <h2 className="font-serif text-4xl text-olive-deep sm:text-5xl lg:text-6xl">
-              El problema no es la falta de voluntad.
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-earth-dark/80">
-              Es sentirte inflamada después de comer, no saber qué cocinar y terminar cansada de intentar cuidarte sin ver cambios reales.
-            </p>
-          </div>
+        <div className="mx-auto max-w-2xl text-center">
+          <SectionEyebrow>¿Te suena familiar?</SectionEyebrow>
+          <h2 className="font-serif text-4xl text-olive-deep sm:text-5xl">
+            El problema no es la <span className="text-terracotta">falta de voluntad</span>.
+          </h2>
+          <p className="mt-6 text-lg leading-relaxed text-earth-dark/80">
+            Es sentirte inflamada después de comer, no saber qué cocinar y terminar cansada de intentar cuidarte sin ver cambios reales.
+          </p>
+        </div>
 
-          <div className="space-y-4">
-            {painPoints.map((p, i) => (
-              <div
-                key={i}
-                className="group flex items-start gap-5 border-t border-olive/15 pt-5 pb-1 transition-colors hover:border-olive-deep/40"
-              >
-                <span className="font-serif text-2xl text-olive/60 tabular-nums">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <p className="text-base leading-relaxed text-earth-dark sm:text-lg">{p}</p>
-              </div>
-            ))}
-          </div>
+        <div className="mx-auto mt-14 max-w-2xl space-y-4">
+          {painPoints.map((p, i) => (
+            <div
+              key={i}
+              className="flex items-start gap-4 rounded-2xl border-l-4 border-terracotta bg-cream p-5 shadow-card sm:p-6"
+            >
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-terracotta/15 text-terracotta">
+                <HeartPulse className="h-4 w-4" />
+              </span>
+              <p className="text-base leading-relaxed text-earth-dark sm:text-lg">{p}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -269,37 +262,39 @@ function CompareSection() {
   return (
     <section className="bg-sand/50 py-24 sm:py-32">
       <div className="container-editorial">
-        <div className="mx-auto max-w-3xl text-center">
-          <SectionEyebrow>La diferencia</SectionEyebrow>
-          <h2 className="font-serif text-4xl text-olive-deep sm:text-5xl lg:text-6xl">
-            No está en hacer <em className="italic text-olive">dieta</em>.
+        <div className="mx-auto max-w-2xl text-center">
+          <SectionEyebrow>La diferencia está acá</SectionEyebrow>
+          <h2 className="font-serif text-4xl text-olive-deep sm:text-5xl">
+            La diferencia no está en hacer <span className="text-terracotta">dieta</span>.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-earth-dark/80">
             Está en tener recetas simples, organizadas y deliciosas que puedas sostener incluso en semanas caóticas, sin pasar hambre ni sentir que hacés sacrificios.
           </p>
         </div>
 
-        <div className="mt-16 grid gap-5 md:grid-cols-2">
-          <div className="rounded-lg bg-cream p-8 sm:p-10 border border-danger/20">
-            <span className="eyebrow" style={{ color: "var(--danger)" }}>Dietas extremas</span>
-            <h3 className="mt-3 font-serif text-2xl text-danger">Lo que no funciona</h3>
-            <ul className="mt-8 space-y-4">
-              {["Difíciles de sostener", "Te dejan sin ideas", "Generan ansiedad y restricción", "Volvés a los mismos hábitos"].map((t) => (
-                <li key={t} className="flex items-start gap-3 border-b border-danger/10 pb-4 last:border-0">
+        <div className="mx-auto mt-14 max-w-2xl space-y-6">
+          <div className="rounded-2xl border-l-4 border-danger bg-cream p-6 sm:p-8">
+            <h3 className="flex items-center gap-2 font-serif text-2xl text-danger">
+              <X className="h-5 w-5" /> Dietas extremas
+            </h3>
+            <ul className="mt-5 space-y-3">
+              {["Difíciles de sostener y terminás abandonando.", "Te dejan sin ideas y pensando todo el día en comida.", "Generan ansiedad y sensación de restricción constante.", "Volvés a los mismos hábitos de siempre."].map((t) => (
+                <li key={t} className="flex items-start gap-3">
                   <X className="mt-1 h-4 w-4 shrink-0 text-danger" />
                   <span className="text-earth-dark">{t}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="rounded-lg bg-olive-deep p-8 sm:p-10 text-cream shadow-lift">
-            <span className="eyebrow" style={{ color: "var(--gold)" }}>Alimentación antiinflamatoria</span>
-            <h3 className="mt-3 font-serif text-2xl text-cream">Lo que sí funciona</h3>
-            <ul className="mt-8 space-y-4">
-              {["Recetas fáciles y ricas", "Ingredientes simples", "Menos hinchazón y más energía", "Sostenible sin vivir a dieta"].map((t) => (
-                <li key={t} className="flex items-start gap-3 border-b border-cream/15 pb-4 last:border-0">
-                  <Check className="mt-1 h-4 w-4 shrink-0 text-gold" />
-                  <span>{t}</span>
+          <div className="rounded-2xl border-l-4 border-olive bg-cream p-6 sm:p-8">
+            <h3 className="flex items-center gap-2 font-serif text-2xl text-olive-deep">
+              <Check className="h-5 w-5 text-olive" /> Alimentación antiinflamatoria práctica
+            </h3>
+            <ul className="mt-5 space-y-3">
+              {["Recetas fáciles y ricas.", "Ingredientes simples.", "Menos hinchazón y más energía.", "Sostenible sin vivir a dieta."].map((t) => (
+                <li key={t} className="flex items-start gap-3">
+                  <Check className="mt-1 h-4 w-4 shrink-0 text-olive" />
+                  <span className="text-earth-dark">{t}</span>
                 </li>
               ))}
             </ul>
@@ -314,35 +309,29 @@ function NeedsSection() {
   return (
     <section className="py-24 sm:py-32">
       <div className="container-editorial">
-        <div className="mx-auto max-w-3xl text-center">
-          <SectionEyebrow>Todo lo que necesitás</SectionEyebrow>
-          <h2 className="font-serif text-4xl text-olive-deep sm:text-5xl lg:text-6xl">
-            Para sentirte más liviana y dejar de sufrir pensando qué cocinar.
+        <div className="mx-auto max-w-2xl text-center">
+          <SectionEyebrow>Todo resuelto en un solo lugar</SectionEyebrow>
+          <h2 className="font-serif text-4xl text-olive-deep sm:text-5xl">
+            Todo lo que necesitás para <span className="text-terracotta">sentirte más liviana</span> y dejar de sufrir pensando qué cocinar.
           </h2>
+          <p className="mt-5 text-lg text-earth-dark/80">
+            Recetas simples, rápidas y deliciosas para que cuidarte deje de sentirse complicado, incluso en semanas con poco tiempo.
+          </p>
         </div>
 
-        <div className="mt-20 space-y-16 lg:space-y-24">
-          {needCards.map((c, i) => {
-            const reversed = i % 2 === 1;
-            return (
-              <article
-                key={c.title}
-                className="grid gap-8 lg:grid-cols-2 lg:gap-16 lg:items-center"
-              >
-                <div className={reversed ? "lg:order-2" : ""}>
-                  <ImagePlaceholder className="aspect-[4/3] w-full shadow-card" />
+        <div className="mx-auto mt-14 max-w-xl space-y-6">
+          {needCards.map((c) => (
+            <article key={c.title} className="overflow-hidden rounded-2xl bg-cream shadow-card">
+              <ImagePlaceholder className="aspect-[16/10] w-full rounded-none border-0" />
+              <div className="flex items-start gap-3 p-6">
+                <c.icon className="mt-1 h-5 w-5 shrink-0 text-olive" />
+                <div>
+                  <h3 className="font-serif text-xl text-olive-deep">{c.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-earth-dark/80">{c.desc}</p>
                 </div>
-                <div className={reversed ? "lg:order-1" : ""}>
-                  <div className="flex items-center gap-4">
-                    <span className="number-badge">{String(i + 1).padStart(2, "0")}</span>
-                    <c.icon className="h-6 w-6 text-olive" />
-                  </div>
-                  <h3 className="mt-5 font-serif text-3xl text-olive-deep sm:text-4xl">{c.title}</h3>
-                  <p className="mt-4 max-w-md text-lg leading-relaxed text-earth-dark/80">{c.desc}</p>
-                </div>
-              </article>
-            );
-          })}
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -465,7 +454,7 @@ function BonusesSection() {
             Bonos incluidos
           </span>
           <h2 className="mt-5 font-serif text-4xl text-olive-deep sm:text-5xl lg:text-6xl">
-            Además, <em className="italic text-olive">todo</em> esto gratis.
+            Además, <span className="text-terracotta">todo</span> esto gratis.
           </h2>
           <p className="mt-5 text-lg text-earth-dark/80">
             Con tu compra recibís estos bonos sin costo adicional.
@@ -499,7 +488,7 @@ function BonusesSection() {
         <div className="mt-16 rounded-lg bg-olive-deep p-10 text-center text-cream sm:p-14">
           <Sparkles className="mx-auto h-8 w-8 text-gold" />
           <p className="mt-5 font-serif text-3xl leading-snug sm:text-4xl">
-            Un pack completo, hoy incluido <em className="italic text-gold">sin costo</em>.
+            Un pack completo, hoy incluido <span className="text-gold">sin costo</span>.
           </p>
         </div>
       </div>
@@ -617,7 +606,7 @@ function PaymentSection() {
         <div className="text-center">
           <SectionEyebrow>Estás a un paso</SectionEyebrow>
           <h2 className="font-serif text-4xl text-olive-deep sm:text-5xl">
-            De volver a comer rico <em className="italic text-olive">sin</em> sentirte inflamada.
+            De volver a comer rico <span className="text-terracotta">sin</span> sentirte inflamada.
           </h2>
         </div>
 
