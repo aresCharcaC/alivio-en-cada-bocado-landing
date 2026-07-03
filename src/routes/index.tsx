@@ -22,6 +22,14 @@ function ImagePlaceholder({ label = "imagen aquí", className = "" }: { label?: 
   );
 }
 
+function ProductImage({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
+  return (
+    <div className={`relative overflow-hidden rounded-lg ${className}`}>
+      <img src={encodeURI(src)} alt={alt} className="h-full w-full object-cover" />
+    </div>
+  );
+}
+
 function CTAButton({
   children,
   variant = "primary",
@@ -83,10 +91,10 @@ const receiveCards = [
 ];
 
 const bonuses = [
-  { n: "01", title: "Digestión Liviana", tag: "Bajo FODMAP · sin gluten" },
-  { n: "02", title: "Disfrutar Sin Lácteos", tag: "Recetas sin lácteos" },
-  { n: "03", title: "Snacks para Freidora de Aire", tag: "Rápidos y crocantes" },
-  { n: "04", title: "Pan Casero Saludable", tag: "Sin harinas refinadas" },
+  { n: "01", title: "Digestión Liviana", tag: "Bajo FODMAP · sin gluten", img: "/images/bajo en fodmap bonus.png" },
+  { n: "02", title: "Disfrutar Sin Lácteos", tag: "Recetas sin lácteos", img: "/images/el placer sin lacteos bonus.png" },
+  { n: "03", title: "Snacks para Freidora de Aire", tag: "Rápidos y crocantes", img: "/images/snacks freidora de aire bonus.png" },
+  { n: "04", title: "Pan Casero Saludable", tag: "Sin harinas refinadas", img: "/images/pan casero bonus.png" },
   { n: "05", title: "Desayunos Altos en Proteína", tag: "Energía sostenida" },
   { n: "06", title: "Almuerzos Saludables y Fáciles", tag: "Para toda la semana" },
   { n: "07", title: "Cenas Ligeras y Rápidas", tag: "Livianas y sabrosas" },
@@ -181,8 +189,9 @@ function Hero() {
           </div>
 
           <div className="relative">
-            <ImagePlaceholder
-              label="mockup ebook + celular"
+            <ProductImage
+              src="/images/alivio en cada bocado.png"
+              alt="Ebook Alivio en Cada Bocado — mockup libro y celular"
               className="aspect-[4/5] w-full max-w-md mx-auto shadow-lift"
             />
             <div className="absolute -bottom-6 -left-4 sm:-left-8 max-w-[240px] rounded-lg bg-cream p-4 shadow-soft border border-olive/10">
@@ -346,8 +355,9 @@ function ProductSection() {
       <div className="container-editorial">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20 lg:items-center">
           <div className="relative">
-            <ImagePlaceholder
-              label="ebook — portada"
+            <ProductImage
+              src="/images/alivio en cada bocado.png"
+              alt="Ebook Alivio en Cada Bocado — portada"
               className="aspect-[4/5] w-full max-w-md mx-auto shadow-lift"
             />
             <div className="absolute top-6 -right-2 sm:right-6 rotate-6 rounded-full bg-danger px-5 py-2 text-xs font-bold uppercase tracking-widest text-cream shadow-soft">
@@ -468,7 +478,15 @@ function BonusesSection() {
               <div className="absolute top-4 right-4 z-10 rounded-full bg-olive-deep px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-cream">
                 Hoy gratis
               </div>
-              <ImagePlaceholder label="portada" className="aspect-[3/4] w-full rounded-none border-0 border-b border-olive/10" />
+              {b.img ? (
+                <ProductImage
+                  src={b.img}
+                  alt={`Bono — ${b.title}`}
+                  className="aspect-[3/4] w-full rounded-none border-b border-olive/10"
+                />
+              ) : (
+                <ImagePlaceholder label="portada" className="aspect-[3/4] w-full rounded-none border-0 border-b border-olive/10" />
+              )}
               <div className="p-6">
                 <span className="font-serif text-sm text-olive/60 tabular-nums">{b.n}</span>
                 <h3 className="mt-2 font-serif text-xl leading-tight text-olive-deep">{b.title}</h3>
@@ -499,7 +517,11 @@ function OtherBooksSection() {
         </div>
 
         <article className="mt-12 grid gap-10 rounded-lg bg-cream p-6 shadow-card md:grid-cols-[260px_1fr] md:items-center md:p-10">
-          <ImagePlaceholder className="aspect-[3/4] w-full" />
+          <ProductImage
+            src="/images/hipotiroidismo edicion completa.png"
+            alt="Hipotiroidismo — Edición Completa"
+            className="aspect-[3/4] w-full"
+          />
           <div>
             <span className="eyebrow">Edición completa</span>
             <h3 className="mt-3 font-serif text-3xl text-olive-deep sm:text-4xl">Hipotiroidismo — Edición Completa</h3>
